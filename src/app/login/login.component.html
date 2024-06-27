@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="login()">
+  <p>
+    Since this is a sample app, any email and password will do.
+    No actual authentication is performed.
+  </p>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput type="email" formControlName="email" required>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password" required>
+  </mat-form-field>
+  <section class="button-bar">
+    <button mat-raised-button color="primary" [disabled]="!form.valid">Log In</button>
+  </section>
+</form>

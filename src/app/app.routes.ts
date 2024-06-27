@@ -1,3 +1,49 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { authGuard } from './auth.guard';
+
+import { LoginComponent } from './login/login.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+
+import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { ElvesComponent } from './home/fantasy/elves/elves.component';
+import { TrollsComponent } from './home/fantasy/trolls/trolls.component';
+import { ItemsComponent } from './home/items/items.component';
+import { DonutsComponent } from './home/reality/donuts/donuts.component';
+import { PizzaComponent } from './home/reality/pizza/pizza.component';
+import { StuffComponent } from './home/stuff/stuff.component';
+import { DoodadsComponent } from './home/stuff/doodads/doodads.component';
+import { GizmosComponent } from './home/stuff/gizmos/gizmos.component';
+import { WidgetsComponent } from './home/stuff/widgets/widgets.component';
+import { ThingsComponent } from './home/things/things.component';
+
+export const routes: Routes = [
+  { path: '', component: WelcomeComponent, pathMatch: 'full' },
+  {
+    path: '',
+    component: HomeComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'elves', component: ElvesComponent },
+      { path: 'trolls', component: TrollsComponent },
+      { path: 'items', component: ItemsComponent },
+      { path: 'donuts', component: DonutsComponent },
+      { path: 'pizza', component: PizzaComponent },
+      { path: 'things', component: ThingsComponent },
+    ],
+    canActivate: [authGuard]
+  },
+  {
+    path: '',
+    component: StuffComponent,
+    children: [
+      { path: 'doodads', component: DoodadsComponent },
+      { path: 'gizmos', component: GizmosComponent },
+      { path: 'widgets', component: WidgetsComponent },
+    ],
+  canActivate: [authGuard]
+  },
+  { path: 'login', component: LoginComponent },
+  { path: '**', redirectTo: '' }
+];

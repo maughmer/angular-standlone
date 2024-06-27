@@ -1,0 +1,30 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  // material overrides
+  // default font and toolbar height are larger than i prefer
+  // font-family: var(--app-font-family);
+  font-size: var(--app-font-size);
+  height: calc(var(--app-font-size) * 3.5);
+  // --
+}
+
+section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  &:active {
+    color: #ccc;
+  }
+  // span.title {
+  //   font-size: 1rem;
+  // }
+}
+
+// material overrides
+// to align menu item text and icon
+// ::ng-deep .mat-mdc-menu-item-text {
+//   display: flex;
+//   gap: 0.5rem;
+// }

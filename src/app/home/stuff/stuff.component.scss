@@ -1,0 +1,41 @@
+:host {
+  // remove rounding from the nav list buttons
+  --mat-list-active-indicator-shape: none;
+}
+
+main {
+  display: flex;
+  height: 100%;
+}
+
+// material override
+// otherwise there will be padding above and below the nav pane
+mat-nav-list {
+  padding: 0;
+}
+
+section {
+  &.nav {
+    width: 220px;
+    border-right: 1px solid #3f51b57f; // TODO: theme this to use palette primary
+    user-select: none;
+    a.active {
+      background-color: var(--nav-active);
+    }
+  }
+  &.content {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+span.home-nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+mat-panel-description {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

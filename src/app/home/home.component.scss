@@ -1,0 +1,56 @@
+:host {
+  // remove rounding from the nav list buttons
+  --mat-list-active-indicator-shape: none;
+  // override the nav list item text size
+  --mdc-list-list-item-label-text-size: var(--app-font-size);
+}
+
+main {
+  display: flex;
+  height: 100%;
+}
+
+// material override
+// otherwise there will be padding above and below the nav pane
+mat-nav-list {
+  padding: 0;
+}
+
+section {
+  &.nav {
+    width: 220px;
+    border-right: 1px solid #3f51b57f; // TODO: theme this to use palette primary
+    user-select: none;
+    a.active {
+      background-color: var(--nav-active);
+    }
+  }
+  &.content {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+span.sub-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+a.parent {
+  background-color: lightgray;
+}
+
+.accordion {
+  border-bottom: 1px solid lightgray;
+  span {
+    padding-left: 1rem;
+  }
+}
+.hidden {
+  display: none;
+}
+.visible {
+  display: flex;
+  flex-direction: column;
+}

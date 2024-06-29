@@ -1,20 +1,26 @@
 <mat-toolbar color="primary">
 
   <section>
-    <span class="title">Angular Standalone</span>
+    <div>
+      <span class="title">Angular Standalone</span>
+    </div>
   </section>
   @if (isAuthenticated) {
-    <section [matMenuTriggerFor]="userMenu">
-      <span>Username</span>
-      <mat-icon>menu</mat-icon>
+    <section>
+      <div [matMenuTriggerFor]="userMenu">
+        <!-- <span>Username</span> -->
+        <mat-icon>menu</mat-icon>
+      </div>
+      <div>
+        <mat-icon>help</mat-icon>
+      </div>
     </section>
-    <!-- <section>
-      <mat-icon>help</mat-icon>
-    </section> -->
   } @else {
     <section (click)="login()">
-      <mat-icon>login</mat-icon>
-      <span>Login</span>
+      <div>
+        <mat-icon>login</mat-icon>
+        <span>Login</span>
+      </div>
     </section>
   }
   <mat-menu #userMenu="matMenu" xPosition="before">

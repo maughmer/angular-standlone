@@ -7,19 +7,20 @@ mat-toolbar {
   font-size: var(--app-font-size);
   height: calc(var(--app-font-size) * 3.5);
   // --
-}
-
-section {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  &:active {
-    color: #ccc;
+  section, div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    div {
+      cursor: pointer;
+      &:active {
+        color: #ccc;
+      }
+    }
+    // span.title {
+    //   font-size: 1rem;
+    // }
   }
-  // span.title {
-  //   font-size: 1rem;
-  // }
 }
 
 // material overrides

@@ -5,7 +5,7 @@ mat-toolbar {
   // default font and toolbar height are larger than i prefer
   // font-family: var(--app-font-family);
   font-size: var(--app-font-size);
-  height: calc(var(--app-font-size) * 3.5);
+  height: var(--toolbar-height);
   // --
   section, div {
     display: flex;

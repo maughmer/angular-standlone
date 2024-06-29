@@ -1,5 +1,6 @@
 :root {
   --app-font-size: 16px;
+  --toolbar-height: calc(var(--app-font-size) * 3.5);
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   // item select color for nav and sub-navs
   --nav-active: #e6e6fa; // lavender
@@ -28,6 +29,3 @@ body {
 .mat-mdc-list-base {
   --mdc-list-list-item-focus-state-layer-color: none;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -7,11 +7,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
-import { ElvesComponent } from './home/fantasy/elves/elves.component';
-import { TrollsComponent } from './home/fantasy/trolls/trolls.component';
 import { ItemsComponent } from './home/items/items.component';
-import { DonutsComponent } from './home/reality/donuts/donuts.component';
-import { PizzaComponent } from './home/reality/pizza/pizza.component';
 import { StuffComponent } from './home/stuff/stuff.component';
 import { DoodadsComponent } from './home/stuff/doodads/doodads.component';
 import { GizmosComponent } from './home/stuff/gizmos/gizmos.component';
@@ -25,11 +21,7 @@ export const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'elves', component: ElvesComponent },
-      { path: 'trolls', component: TrollsComponent },
       { path: 'items', component: ItemsComponent },
-      { path: 'donuts', component: DonutsComponent },
-      { path: 'pizza', component: PizzaComponent },
       { path: 'things', component: ThingsComponent },
     ],
     canActivate: [authGuard]

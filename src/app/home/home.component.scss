@@ -36,21 +36,3 @@ span.sub-nav {
   justify-content: space-between;
   width: 100%;
 }
-
-a.parent {
-  background-color: lightgray;
-}
-
-.accordion {
-  border-bottom: 1px solid lightgray;
-  span {
-    padding-left: 1rem;
-  }
-}
-.hidden {
-  display: none;
-}
-.visible {
-  display: flex;
-  flex-direction: column;
-}

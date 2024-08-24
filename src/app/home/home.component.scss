@@ -2,12 +2,16 @@
   // remove rounding from the nav list buttons
   --mat-list-active-indicator-shape: none;
   // override the nav list item text size
-  --mdc-list-list-item-label-text-size: var(--app-font-size);
+  // --mdc-list-list-item-label-text-size: var(--app-font-size);
 }
 
 main {
   display: flex;
-  height: calc(100% - var(--toolbar-height));
+  // this needs to be min-height so that the height of the nav will be the same as
+  // the populated content, should the content cause the page to scroll. also, we
+  // subtract toolbar height so that a non-populated page won't scroll the height
+  // of the toolbar
+  min-height: calc(100% - var(--toolbar-height));
 }
 
 // material override
@@ -18,9 +22,12 @@ mat-nav-list {
 
 section {
   &.nav {
-    width: 220px;
     border-right: 1px solid #3f51b57f; // TODO: theme this to use palette primary
     user-select: none;
+    a {
+      min-width: 180px;
+      max-width: 220px;
+    }
     a.active {
       background-color: var(--nav-active);
     }
@@ -31,8 +38,8 @@ section {
   }
 }
 
+// positioning the sub-nav arrow to the right
 span.sub-nav {
   display: flex;
   justify-content: space-between;
-  width: 100%;
 }

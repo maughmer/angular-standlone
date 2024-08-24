@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -15,7 +15,9 @@ import { EventService } from '../event.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit {
+
+  @ViewChild('email') email!: ElementRef;
 
   form!: FormGroup;
 
@@ -29,6 +31,10 @@ export class LoginComponent {
       email: new FormControl('', [Validators.email, Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(1)])
     });
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => this.email.nativeElement.focus());
   }
 
   login(): void {

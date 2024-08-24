@@ -1,0 +1,16 @@
+p.title {
+  margin-top: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  th, td {
+    text-align: center;
+    width: 15%;
+  }
+  th:first-child, td:first-child {
+    text-align: left;
+    width: calc(100% - (15% * 3));
+  }
+}

@@ -7,12 +7,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
-import { ItemsComponent } from './home/items/items.component';
-import { StuffComponent } from './home/stuff/stuff.component';
-import { DoodadsComponent } from './home/stuff/doodads/doodads.component';
-import { GizmosComponent } from './home/stuff/gizmos/gizmos.component';
-import { WidgetsComponent } from './home/stuff/widgets/widgets.component';
-import { ThingsComponent } from './home/things/things.component';
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent, pathMatch: 'full' },
@@ -21,18 +15,20 @@ export const routes: Routes = [
     component: HomeComponent,
     children: [
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'items', component: ItemsComponent },
-      { path: 'things', component: ThingsComponent },
+      // lazy loading components
+      { path: 'monsters', loadComponent: () => import('./home/monsters/monsters.component').then(mod => mod.MonstersComponent) },
+      { path: 'things', loadComponent: () => import('./home/things/things.component').then(mod => mod.ThingsComponent) },
     ],
     canActivate: [authGuard]
   },
   {
     path: '',
-    component: StuffComponent,
+    // lazy loading component and children
+    loadComponent: () => import('./home/stuff/stuff.component').then(mod => mod.StuffComponent),
     children: [
-      { path: 'doodads', component: DoodadsComponent },
-      { path: 'gizmos', component: GizmosComponent },
-      { path: 'widgets', component: WidgetsComponent },
+      { path: 'doodads', loadComponent: () => import('./home/stuff/doodads/doodads.component').then(mod => mod.DoodadsComponent) },
+      { path: 'gizmos', loadComponent: () => import('./home/stuff/gizmos/gizmos.component').then(mod => mod.GizmosComponent) },
+      { path: 'widgets', loadComponent: () => import('./home/stuff/widgets/widgets.component').then(mod => mod.WidgetsComponent) },
     ],
   canActivate: [authGuard]
   },

@@ -1,18 +1,23 @@
 <mat-toolbar color="primary">
 
   <section>
+    @if (isAuthenticated) {
+      <div (click)="toggleNav()">
+        <mat-icon>menu</mat-icon>
+      </div>
+    }
     <div>
       <span class="title">Angular Standalone</span>
     </div>
   </section>
   @if (isAuthenticated) {
     <section>
+      <div>
+        <mat-icon>help</mat-icon>
+      </div>
       <div [matMenuTriggerFor]="userMenu">
         <!-- <span>Username</span> -->
         <mat-icon>menu</mat-icon>
-      </div>
-      <div>
-        <mat-icon>help</mat-icon>
       </div>
     </section>
   } @else {

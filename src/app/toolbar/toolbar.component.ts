@@ -31,8 +31,10 @@ export class ToolbarComponent {
       tap(authenticated => this.isAuthenticated = authenticated)
     ).subscribe();
     this.subscriptions.push(subscription);
-    // keep login active during dev
-    // this.eventService.authenticated = true;
+  }
+
+  toggleNav() {
+    this.eventService.toggleNav();
   }
 
   login() {

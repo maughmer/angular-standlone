@@ -14,6 +14,10 @@ main {
   min-height: calc(100% - var(--toolbar-height));
 }
 
+mat-sidenav-container {
+  min-height: calc(100% - var(--toolbar-height));
+}
+
 // material override
 // otherwise there will be padding above and below the nav pane
 mat-nav-list {
@@ -38,8 +42,33 @@ section {
   }
 }
 
+mat-sidenav {
+  background-color: #fcfcff; // a very pale purple
+}
+
+.nav {
+  border-right: 1px solid #3f51b57f; // TODO: theme this to use palette primary
+  user-select: none;
+  a {
+    // min-width: 180px;
+    max-width: 220px;
+  }
+  a.active {
+    background-color: var(--nav-active);
+  }
+}
+.content {
+  max-width: 100%;
+  padding: 1rem;
+}
+
 // positioning the sub-nav arrow to the right
 span.sub-nav {
   display: flex;
   justify-content: space-between;
+}
+
+span.item-name {
+  // display: none;
+  padding-right: 2rem;
 }

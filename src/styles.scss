@@ -10,6 +10,11 @@
   font-size: var(--app-font-size);
 }
 
+html {
+  // material override
+  --mat-sidenav-content-background-color: #fcfcff; // a very pale purple
+}
+
 html, body {
   height: 100%;
 }
@@ -29,4 +34,11 @@ body {
 // in our nav bar
 .mat-mdc-list-base {
   --mdc-list-list-item-focus-state-layer-color: none;
+}
+
+// here we override the layout of our nav list items, to accommodate
+// for the icon
+.mdc-list-item__primary-text {
+  display: flex;
+  gap: 0.5rem;
 }

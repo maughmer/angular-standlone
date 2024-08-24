@@ -7,12 +7,21 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class EventService {
 
-  private _authenticated = new BehaviorSubject(false);
+  // default, not authenticated
+  // default during dev, authenticated
+  private _authenticated = new BehaviorSubject(true);
+  // default, nav opened
+  private _toggleNav = new BehaviorSubject(window.innerWidth > 551);
 
   authenticated$ = this._authenticated.asObservable();
+  toggleNav$ = this._toggleNav.asObservable();
 
   set authenticated(value: boolean) {
     this._authenticated.next(value);
+  }
+
+  toggleNav() {
+    this._toggleNav.next(!this._toggleNav.value);
   }
 
 }

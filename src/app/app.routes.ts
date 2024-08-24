@@ -21,17 +21,20 @@ export const routes: Routes = [
     ],
     canActivate: [authGuard]
   },
-  {
-    path: '',
-    // lazy loading component and children
-    loadComponent: () => import('./home/stuff/stuff.component').then(mod => mod.StuffComponent),
-    children: [
-      { path: 'doodads', loadComponent: () => import('./home/stuff/doodads/doodads.component').then(mod => mod.DoodadsComponent) },
-      { path: 'gizmos', loadComponent: () => import('./home/stuff/gizmos/gizmos.component').then(mod => mod.GizmosComponent) },
-      { path: 'widgets', loadComponent: () => import('./home/stuff/widgets/widgets.component').then(mod => mod.WidgetsComponent) },
-    ],
-  canActivate: [authGuard]
-  },
+  // temporarily disabling this as the secondary nav doesn't close when sidenav visibility is toggled.
+  // should probably combine the navs into a router outlet.
+  //
+  // {
+  //   path: '',
+  //   // lazy loading component and children
+  //   loadComponent: () => import('./home/stuff/stuff.component').then(mod => mod.StuffComponent),
+  //   children: [
+  //     { path: 'doodads', loadComponent: () => import('./home/stuff/doodads/doodads.component').then(mod => mod.DoodadsComponent) },
+  //     { path: 'gizmos', loadComponent: () => import('./home/stuff/gizmos/gizmos.component').then(mod => mod.GizmosComponent) },
+  //     { path: 'widgets', loadComponent: () => import('./home/stuff/widgets/widgets.component').then(mod => mod.WidgetsComponent) },
+  //   ],
+  //   canActivate: [authGuard]
+  // },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '' }
 ];

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
+import { HelpService } from '../../help.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,6 +9,17 @@ import { Component } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent {
+export class DashboardComponent implements AfterViewInit {
+
+  @ViewChild('helpTemplate') helpTemplate!: TemplateRef<any>;
+
+  constructor(
+    private router: Router,
+    private helpService: HelpService
+  ) {}
+
+  ngAfterViewInit(): void {
+    this.helpService.add(this.router.url, this.helpTemplate);
+  }
 
 }

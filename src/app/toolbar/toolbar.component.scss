@@ -29,3 +29,13 @@ mat-toolbar {
 //   display: flex;
 //   gap: 0.5rem;
 // }
+
+section#help {
+  font-size: 0.8rem;
+  padding: 0rem 1rem;
+  // text-align: justify;
+  line-height: 1.5;
+  & h3 {
+    margin-bottom: 0.5rem;
+  }
+}

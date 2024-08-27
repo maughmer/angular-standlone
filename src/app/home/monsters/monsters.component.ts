@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
 
 import { tap } from 'rxjs';
 
@@ -6,6 +6,8 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 import { ApiService } from '../../api.service';
+import { HelpService } from '../../help.service';
+import { Router } from '@angular/router';
 
 interface Monster {
   name: string;
@@ -23,6 +25,8 @@ interface Monster {
 })
 export class MonstersComponent implements AfterViewInit {
 
+  @ViewChild('helpTemplate') helpTemplate!: TemplateRef<any>;
+
   //
   // our table and paginator will be hidden until we have data. once we
   // have data we can set our dataSource, which will in turn cause our
@@ -39,6 +43,8 @@ export class MonstersComponent implements AfterViewInit {
   columns = ['name', 'ac', 'hp', 'cr'];
 
   constructor(
+    private router: Router,
+    private helpService: HelpService,
     private apiService: ApiService
   ) {}
 
@@ -46,6 +52,7 @@ export class MonstersComponent implements AfterViewInit {
     this.apiService.getMonsters().pipe(
       tap(data => this.dataSource.data = data),
     ).subscribe();
+    this.helpService.add(this.router.url, this.helpTemplate);
   }
 
 }

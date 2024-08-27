@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { Subscription, tap } from 'rxjs';
@@ -8,22 +9,26 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { EventService } from '../event.service';
+import { HelpService } from '../help.service';
 
 @Component({
   selector: 'app-toolbar',
   standalone: true,
-  imports: [MatIconModule, MatMenuModule, MatToolbarModule],
+  imports: [NgTemplateOutlet, MatIconModule, MatMenuModule, MatToolbarModule],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })
 export class ToolbarComponent {
+
+  helpTemplate!: TemplateRef<any>;
 
   private subscriptions: Subscription[] = [];
   isAuthenticated = false;
 
   constructor(
     private router: Router,
-    private eventService: EventService
+    private eventService: EventService,
+    private helpService: HelpService
   ) {}
 
   ngOnInit() {
@@ -39,6 +44,14 @@ export class ToolbarComponent {
 
   login() {
     this.router.navigateByUrl('login');
+  }
+
+  onHelp() {
+    const helpTemplate = this.helpService.get(this.router.url);
+    console.log('helpTemplate:', helpTemplate);
+    if (helpTemplate) {
+      this.helpTemplate = helpTemplate;
+    }
   }
 
   logout() {

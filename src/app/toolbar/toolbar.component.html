@@ -10,9 +10,10 @@
       <span class="title">Angular Standalone</span>
     </div>
   </section>
+
   @if (isAuthenticated) {
     <section>
-      <div>
+      <div [matMenuTriggerFor]="helpMenu" (click)="onHelp()">
         <mat-icon>help</mat-icon>
       </div>
       <div [matMenuTriggerFor]="userMenu">
@@ -28,11 +29,18 @@
       </div>
     </section>
   }
+
   <mat-menu #userMenu="matMenu" xPosition="before">
     <button mat-menu-item (click)="logout()">
       <span>Logout</span>
       <mat-icon>logout</mat-icon>
     </button>
+  </mat-menu>
+
+  <mat-menu #helpMenu="matMenu" xPosition="before">
+    <section id="help">
+      <ng-container *ngTemplateOutlet="helpTemplate"></ng-container>
+    </section>
   </mat-menu>
 
 </mat-toolbar>

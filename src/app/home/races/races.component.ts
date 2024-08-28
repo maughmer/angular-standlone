@@ -4,7 +4,7 @@ import { HelpService } from '../../help.service';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ApiService } from '../../api.service';
-import { tap } from 'rxjs';
+import { Subscription, tap } from 'rxjs';
 
 interface Race {
   name: string;
@@ -23,6 +23,8 @@ interface Race {
 export class RacesComponent implements AfterViewInit {
 
   @ViewChild('helpTemplate') helpTemplate!: TemplateRef<any>;
+
+  private subscriptions: Subscription[] = [];
 
   //
   // our table and paginator will be hidden until we have data. once we
@@ -46,10 +48,15 @@ export class RacesComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
-    this.apiService.getRaces().pipe(
+    const subscription = this.apiService.getRaces().pipe(
       tap(data => this.dataSource.data = data),
     ).subscribe();
+    this.subscriptions.push(subscription);
     this.helpService.add(this.router.url, this.helpTemplate);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 }

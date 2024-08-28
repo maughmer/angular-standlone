@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, TemplateRef, ViewChild } from '@angular/core';
 
-import { tap } from 'rxjs';
+import { Subscription, tap } from 'rxjs';
 
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -27,6 +27,8 @@ export class MonstersComponent implements AfterViewInit {
 
   @ViewChild('helpTemplate') helpTemplate!: TemplateRef<any>;
 
+  private subscriptions: Subscription[] = [];
+
   //
   // our table and paginator will be hidden until we have data. once we
   // have data we can set our dataSource, which will in turn cause our
@@ -49,10 +51,15 @@ export class MonstersComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
-    this.apiService.getMonsters().pipe(
+    const subscription = this.apiService.getMonsters().pipe(
       tap(data => this.dataSource.data = data),
     ).subscribe();
+    this.subscriptions.push(subscription);
     this.helpService.add(this.router.url, this.helpTemplate);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 }

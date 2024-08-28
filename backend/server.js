@@ -23,6 +23,13 @@ app.get('/monsters', async (req, res) => {
   res.json(JSON.parse(monsters));
 });
 
+app.get('/races', async (req, res) => {
+  // race data from the creative commons srd v5.1
+  // https://www.dndbeyond.com/resources/1781-systems-reference-document-srd
+  const races = await fs.readFile('./data/races.json', 'utf8');
+  res.json(JSON.parse(races));
+});
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}...`);
 });

@@ -17,7 +17,7 @@ export const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       // lazy loading components
       { path: 'monsters', loadComponent: () => import('./home/monsters/monsters.component').then(mod => mod.MonstersComponent) },
-      { path: 'things', loadComponent: () => import('./home/things/things.component').then(mod => mod.ThingsComponent) },
+      { path: 'races', loadComponent: () => import('./home/races/races.component').then(mod => mod.RacesComponent) },
     ],
     canActivate: [authGuard]
   },

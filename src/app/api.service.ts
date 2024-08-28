@@ -16,4 +16,8 @@ export class ApiService {
     return this.http.get('http://localhost:3000/monsters');
   }
 
+  getRaces(): Observable<any> {
+    return this.http.get('http://localhost:3000/races');
+  }
+
 }

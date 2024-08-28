@@ -11,6 +11,9 @@ table {
   }
   th:first-child, td:first-child {
     text-align: left;
-    width: calc(100% - (15% * 3));
+    max-width: calc(100% - (15% * 3));
+  }
+  td:first-child {
+    text-wrap: nowrap;
   }
 }

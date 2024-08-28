@@ -1,0 +1,31 @@
+p.title {
+  margin-top: 0;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  th, td {
+    text-align: center;
+    width: 15%;
+  }
+  th:first-child, td:first-child {
+    text-align: left;
+  }
+  th:last-child, td:last-child {
+    text-align: left;
+    width: calc(100% - (15% * 3));
+  }
+  td:last-child {
+    text-wrap: nowrap;
+  }
+}
+
+@media (max-width: 551px) {
+  table {
+    th:last-child, td:last-child {
+      display: none;
+    }
+  }
+}

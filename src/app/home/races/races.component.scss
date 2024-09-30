@@ -20,6 +20,17 @@ table {
   td:last-child {
     text-wrap: nowrap;
   }
+  .mat-mdc-header-row {
+    background-color: #ccc; // #673ab7;
+    // background-color: #673ab7;
+    // color: white;
+  }
+  .mat-mdc-row {
+    cursor: pointer;
+  }
+  .mat-mdc-row:nth-child(even) {
+    background-color: #eee;
+  }
 }
 
 @media (max-width: 551px) {

@@ -1,6 +1,7 @@
 <mat-sidenav-container hasBackdrop="false">
 
-  <mat-sidenav [mode]="mode" class="nav">
+  <!-- dissableClose to prevent Esc from closing sidenav -->
+  <mat-sidenav [mode]="mode" class="nav" disableClose>
     <mat-nav-list>
       <a mat-list-item routerLink="dashboard" routerLinkActive="mat-primary active"><mat-icon class="material-symbols-outlined">dashboard</mat-icon><span class="item-name">Dashboard</span></a>
       <a mat-list-item routerLink="monsters" routerLinkActive="mat-primary active"><mat-icon class="material-symbols-outlined">raven</mat-icon><span class="item-name">Monsters</span></a>

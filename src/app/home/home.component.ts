@@ -31,7 +31,7 @@ export class HomeComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     setTimeout(() => {
       let subscription = this.eventService.toggleNav$.pipe(
-        tap(state => this.sideNav.toggle(state))
+        tap(state => this.sideNav.toggle(state)),
       ).subscribe();
       this.subscriptions.push(subscription);
       this.onResize();

@@ -41,7 +41,7 @@ export class ToolbarComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     let subscription = this.eventService.toggleNav$.pipe(
-      tap(state => this.isOpen = !state),
+      tap(state => this.isOpen = state),
     ).subscribe();
     this.subscriptions.push(subscription);
   }

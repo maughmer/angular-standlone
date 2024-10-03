@@ -1,27 +1,13 @@
-# AngularStandalone
+# Angular Standalone
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
 
-## Development server
+`Angular Standalone` is a sample Angular application, using the standalone components introduced in Angular 15, and using Angular Material for visual design. I've used this design for multiple projects, as it's straightforward and easily understood by users. The sample serves as a starting point for future projects.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Install Dependencies
 
-## Code scaffolding
+Run `npm i` in both the `angular-standalone` and `angular-standalone/backend` directories to install project dependencies.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Development servers
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `npm start` in both the `angular-standalone` and `angular-standalone/backend` directories to start the front- and back-end servers. Navigate to `http://localhost:4200/` to view the `Angular Standalone` application. The application will automatically reload if you change any of the source files.

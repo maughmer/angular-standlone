@@ -14,9 +14,7 @@ export class HelpService {
   }
 
   get(name: string): TemplateRef<any> {
-    console.log('getting:', name);
     const template = this.templates[name];
-    console.log('template:', template);
     return template;
   }
 

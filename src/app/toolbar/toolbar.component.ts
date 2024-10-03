@@ -48,7 +48,6 @@ export class ToolbarComponent {
 
   onHelp() {
     const helpTemplate = this.helpService.get(this.router.url);
-    console.log('helpTemplate:', helpTemplate);
     if (helpTemplate) {
       this.helpTemplate = helpTemplate;
     }

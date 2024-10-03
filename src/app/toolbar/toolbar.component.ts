@@ -1,4 +1,4 @@
-import { Component, TemplateRef } from '@angular/core';
+import { AfterViewInit, Component, TemplateRef } from '@angular/core';
 import { NgTemplateOutlet } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -18,12 +18,13 @@ import { HelpService } from '../help.service';
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })
-export class ToolbarComponent {
+export class ToolbarComponent implements AfterViewInit {
 
   helpTemplate!: TemplateRef<any>;
 
   private subscriptions: Subscription[] = [];
   isAuthenticated = false;
+  isOpen = true;
 
   constructor(
     private router: Router,
@@ -34,6 +35,13 @@ export class ToolbarComponent {
   ngOnInit() {
     let subscription = this.eventService.authenticated$.pipe(
       tap(authenticated => this.isAuthenticated = authenticated)
+    ).subscribe();
+    this.subscriptions.push(subscription);
+  }
+
+  ngAfterViewInit(): void {
+    let subscription = this.eventService.toggleNav$.pipe(
+      tap(state => this.isOpen = !state),
     ).subscribe();
     this.subscriptions.push(subscription);
   }

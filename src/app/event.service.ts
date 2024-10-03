@@ -9,7 +9,7 @@ export class EventService {
 
   // default, not authenticated
   // default during dev, authenticated
-  private _authenticated = new BehaviorSubject(false);
+  private _authenticated = new BehaviorSubject(true);
   // default, nav opened
   private _toggleNav = new BehaviorSubject(window.innerWidth > 551);
 

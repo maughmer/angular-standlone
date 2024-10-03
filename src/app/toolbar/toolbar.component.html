@@ -3,7 +3,12 @@
   <section>
     @if (isAuthenticated) {
       <div (click)="toggleNav()">
-        <mat-icon>menu</mat-icon>
+        <!-- <mat-icon>menu</mat-icon> -->
+         @if (isOpen) {
+           <span class="material-symbols-outlined">left_panel_open</span>
+          } @else {
+           <span class="material-symbols-outlined">left_panel_close</span>
+         }
       </div>
     }
     <div>
